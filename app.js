@@ -16,6 +16,7 @@ var userRoutes = require('./routes/user');
 var advRoutes = require('./routes/advertise');
 
 var app = express();
+app.use('/static', express.static(__dirname + '/public'))
 
 mongoose.connect('localhost:27017/shopping');
 require('./config/passport');

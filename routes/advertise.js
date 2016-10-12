@@ -16,7 +16,9 @@ router.post('/',function(req,res,next){
   var data = new Advs();
 
   data.type= req.body.typeSelect;
+  data.title = req.body.title;
   data.description=req.body.descTxt;
+  data.budget=req.body.budget;
 
   data.save(function(err){
     if(err)
@@ -24,6 +26,7 @@ router.post('/',function(req,res,next){
     console.log('added to db');
   })
 
+  res.redirect('/');
 
 });
 

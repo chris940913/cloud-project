@@ -6,15 +6,26 @@
   <select class="form-control" id="typeSelect" name="typeSelect" type="text">
     <option>Retailer</option>
     <option>Small business</option>
-    <option>FFactory</option>
-    <option>4</option>
-    <option>5</option>
+    <option>Factory</option>
+    <option>Entrepreneur</option>
+    <option>Freelancer</option>
   </select>
 </div>
 <div class="form-group">
-   <label for="descTxt">description</label>
-   <textarea class="form-control" id="descTxt" name="descTxt" type="text" rows="3"></textarea>
+   <label for="title">Task Title</label>
+   <input type="text" class="form-control" id="title" name="title" placeholder="e.g Fufill my stock">
  </div>
+
+<div class="form-group">
+   <label for="descTxt">Description</label>
+   <textarea class="form-control" id="descTxt" name="descTxt" type="text" rows="6"></textarea>
+ </div>
+ <div class="input-group">
+  <span class="input-group-addon">$</span>
+  <span class="input-group-addon">Budget</span>
+  <input type="text" id="budget" name="budget" class="form-control" aria-label="Amount (to the nearest dollar)">
+</div>
+</br>
    <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 </div>
