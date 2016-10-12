@@ -11,11 +11,16 @@ var passport = require('passport');
 var flash = require('connect-flash');
 var validator = require('express-validator');
 
+
+
 var routes = require('./routes/index');
 var userRoutes = require('./routes/user');
 var advRoutes = require('./routes/advertise');
+var chatRoutes = require('./routes/chat');
 
 var app = express();
+
+
 app.use('/static', express.static(__dirname + '/public'))
 
 mongoose.connect('localhost:27017/shopping');
@@ -46,6 +51,7 @@ app.use(function(req, res, next) {
 app.use('/user', userRoutes);
 app.use('/', routes);
 app.use('/advertise',advRoutes);
+app.use('/chat',chatRoutes);
 
 
 // catch 404 and forward to error handler
@@ -78,6 +84,7 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
+
 
 
 module.exports = app;
