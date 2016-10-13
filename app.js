@@ -10,6 +10,7 @@ var session = require('express-session');
 var passport = require('passport');
 var flash = require('connect-flash');
 var validator = require('express-validator');
+var io= require('socket.io')();
 
 
 
@@ -19,6 +20,9 @@ var advRoutes = require('./routes/advertise');
 var chatRoutes = require('./routes/chat');
 
 var app = express();
+
+
+app.set('port',process.env.PORT || 3000);
 
 
 app.use('/static', express.static(__dirname + '/public'))
@@ -86,5 +90,11 @@ app.use(function(err, req, res, next) {
 });
 
 
+var server = app.listen(app.get('port'), function() {
+  console.log('Listening on port ' + app.get('port'));
+});
 
-module.exports = app;
+io.attach(server);
+io.on('connection', function(socket) {
+  console.log('test');
+});
