@@ -21,8 +21,11 @@ var chatRoutes = require('./routes/chat');
 
 var app = express();
 
+app.io = require('socket.io')();
 
-app.set('port',process.env.PORT || 8080);
+
+
+//app.set('port',process.env.PORT || 8080);
 
 
 app.use('/static', express.static(__dirname + '/public'))
@@ -89,12 +92,14 @@ app.use(function(err, req, res, next) {
   });
 });
 
-
-var server = app.listen(app.get('port'), function() {
-  console.log('Listening on port ' + app.get('port'));
+app.io.on('connection',function(socket){
+  socket.on('postMessage', function(data) {
+     app.io.emit('updateMessages', data);
+   });
 });
 
-io.attach(server);
-io.on('connection', function(socket) {
-  console.log('test');
-});
+
+module.exports = app;
+// var server = app.listen(app.get('port'), function() {
+//   console.log('Listening on port ' + app.get('port'));
+// });

@@ -1,9 +1,9 @@
 {
-  "name": "shopping",
+  "name": "cloud2016",
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node app"
+    "start": "node ./bin/www"
   },
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
