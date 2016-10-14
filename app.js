@@ -12,7 +12,7 @@ var flash = require('connect-flash');
 var validator = require('express-validator');
 var io= require('socket.io')();
 
-
+var db = require('./config/database');
 
 var routes = require('./routes/index');
 var userRoutes = require('./routes/user');
@@ -22,12 +22,12 @@ var chatRoutes = require('./routes/chat');
 var app = express();
 
 
-app.set('port',process.env.PORT || 3000);
+app.set('port',process.env.PORT || 8080);
 
 
 app.use('/static', express.static(__dirname + '/public'))
 
-mongoose.connect('localhost:27017/shopping');
+mongoose.connect(db.local);
 require('./config/passport');
 
 // view engine setup
