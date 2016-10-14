@@ -30,7 +30,7 @@ app.io = require('socket.io')();
 
 app.use('/static', express.static(__dirname + '/public'))
 
-mongoose.connect(db.local);
+mongoose.connect(db.cloud);
 require('./config/passport');
 
 // view engine setup
